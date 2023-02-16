@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music Player</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #music-player {
+        background: linear-gradient(to bottom, #000000, #484848, #5A5A5A, #5A5A5A, #484848, #007F7F);
+        border: 1px solid black;
+        width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      #cassette-player {
+        position: relative;
+        margin-right: 20px;
+        width: 250px;
+        height: 150px;
+      }
+
+      #cassette-front {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #e5e5e5;
+        border: 1px solid #999999;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        z-index: 2;
+      }
+
+      #cassette-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #c7c7c7;
+        border: 1px solid #999999;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        z-index: 1;
+      }
+
+      #cassette-hinge {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        width: 20px;
+        height: 50px;
+        background-color: #c7c7c7;
+        border: 1px solid #999999;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        transform: translate(-100%, -50%);
+        z-index: 3;
+      }
+
+      #cassette-reels {
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        width: 120px;
+        height: 130px;
+        background-color: #333333;
+        border: 1px solid #999999;
+        z-index: 4;
+      }
+
+      #cassette-reel-left {
+        position: absolute;
+        top: 15px;
+        left: 10px;
+        width: 20px;
+        height: 30px;
+        background-color: #999999;
+        border: 1px solid #666666;
+        border-bottom: none;
+        z-index: 5;
+      }
+
+      #cassette-reel-right {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        width: 20px;
+        height: 30px;
+        background-color: #999999;
+        border: 1px solid #666666;
+        border-bottom: none;
+        z-index: 5;
+      }
+
+      #album-art {
+        width: 250px;
+        height: 250px;
+      }
+
+      #album-art img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      #playlist-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+            #now-playing {
+        font-size: 24px;
+        color: white;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      #control-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #control-section button {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      #control-section button:first-child {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="music-player">
+      <div id="cassette-player">
+        <div id="cassette-front"></div>
+        <div id="cassette-back"></div>
+        <div id="cassette-hinge"></div>
+        <div id="cassette-reels">
+          <div id="cassette-reel-left"></div>
+          <div id="cassette-reel-right"></div>
+        </div>
+      </div>
+      <div id="playlist-section">
+        <div id="album-art">
+          <img src="https://via.placeholder.com/250x250.png?text=Album+Art" alt="Album Art">
+        </div>
+        <div id="playlist">
+          <ul>
+            <li>Song 1</li>
+            <li>Song 2</li>
+            <li>Song 3</li>
+            <li>Song 4</li>
+            <li>Song 5</li>
+          </ul>
+        </div>
+      </div>
+      <div id="control-section">
+        <button id="play-button">Play</button>
+        <button id="fastforward-button">Fast Forward</button>
+      </div>
+    </div>
+
+    <script>
+      const playButton = document.querySelector('#play-button');
+      const cassetteReelLeft = document.querySelector('#cassette-reel-left');
+      const cassetteReelRight = document.querySelector('#cassette-reel-right');
+
+      playButton.addEventListener('click', function() {
+        if (playButton.innerText === 'Play') {
+          playButton.innerText = 'Pause';
+          cassetteReelLeft.classList.add('rotate-left');
+          cassetteReelRight.classList.add('rotate-right');
+        } else {
+          playButton.innerText = 'Play';
+          cassetteReelLeft.classList.remove('rotate-left');
+          cassetteReelRight.classList.remove('rotate-right');
+        }
+      });
+    </script>
+  </body>
+</html>
+
